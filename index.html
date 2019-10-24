@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamagochi</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main">
+  <div class="main__song">
+    <audio loop autoplay src="song/1.mp3"  id="song"></audio>
+  </div>
+  <div class="instructions">
+    <ol>
+      <li>eat</li>
+      <li>drink</li>
+      <li>walk</li>
+      <li>dance</li>
+      <li>play</li>
+      <li>sleep</li>
+    </ol>
+    <span class="instructions__close" id="close">+</span>
+    <span class="instructions__info">Info</span>
+  </div>
+  <div class="main__play-pause" id="play"></div>
+</div>
+<div class="tamagotchi">
+  <div class="loop"></div>
+
+  <div class="tamagotchi__inner">
+    <div class="tamagotchi__shadow">
+      <div class="tamagotchi__highlight"></div>
+    </div>
+
+    <div class="screen">
+      <div class="crack crack--top"></div>
+      <div class="crack crack--right">
+        <div class="crack__line"></div>
+      </div>
+      <div class="crack crack--bottom"></div>
+      <div class="crack crack--left">
+        <div class="crack__line"></div>
+      </div>
+
+      <div class="screen__inner screen-inner" id="screen">
+        <div class="screen-inner__top">
+          <div class="prop health">
+            <div class="prop__wrap">
+              <div class="prop__inner"></div>
+            </div>
+            <span class="prop__text">Health <span id="health">100%</span></span>
+          </div>
+          <div class="prop right happy">
+            <div class="prop__wrap">
+              <div class="prop__inner"></div>
+            </div>
+            <span class="prop__text">happy <span id="happy">100%</span></span>
+          </div>
+        </div>
+        <div class="screen-inner__bot">
+          <div class="prop playful">
+            <div class="prop__wrap">
+              <div class="prop__inner"></div>
+            </div>
+            <span class="prop__text">Play <span id="playful">100%</span></span>
+          </div>
+          <div class="prop right boring">
+            <div class="prop__wrap">
+              <div class="prop__inner"></div>
+            </div>
+            <span class="prop__text">boring <span id="boring">0%</span></span>
+          </div>
+        </div>
+        <div class="screen-inner__wrap" id="screen-wrap">
+          <div class="chore-score is-player-thought" id="pat-doing"></div>
+          <img src="img/pumpkin/main.gif" alt="pet">
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <div class="button button--a" id="bt-1">1</div>
+      <div class="button button--b" id="bt-2">2</div>
+      <div class="button button--c" id="bt-3">3</div>
+      <div class="button button--d" id="bt-4">4</div>
+      <div class="button button--i" id="bt-5">5</div>
+      <div class="button button--f" id="bt-6">6</div>
+    </div>
+  </div>
+</div>
+  <script src="js/build/js.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89597051-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>
