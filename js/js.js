@@ -1,5 +1,6 @@
 function Application(petName) {
   this.petName = petName;
+  this.tamagochi = document.getElementById('tamagochi');
   this.itemImage = document.querySelector('#screen-wrap img');
   this.imgPath = 'img/pumpkin/';
   this.patDoing = document.getElementById('pat-doing');
@@ -285,10 +286,11 @@ function Application(petName) {
     if (isDead) {
       this.itemImage.setAttribute('src', this.imgPath + this.images.rip);
       this.patDoing.textContent = 'Oh no';
-      clearInterval(this.interval);
       this.allowMusic = false;
+      this.tamagochi.classList.add('die');
       this.playPause();
       this.blockButtons();
+      clearInterval(this.interval);
     }
   };
   this.riseAgain = () => {

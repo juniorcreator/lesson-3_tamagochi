@@ -66,7 +66,23 @@ html, body {
   transform: translate(-50%, -50%);
   user-select: none;
   box-shadow: 10px 10px 40px -20px rgba(0,0,0,0.4);
-
+  &__rise {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    left: calc(50% - 45px);
+    top: 32px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    border: 3px solid;
+    background-color: #FA9500;
+    border-color: floralwhite;
+  }
   &__inner {
     width: 256px;
     height: 310px;
@@ -97,6 +113,12 @@ html, body {
     transform: rotate(40deg);
     left: 35px;
     top: 5px;
+  }
+  &.die {
+    .tamagotchi__rise {
+      opacity: 1;
+      visibility: visible;
+    }
   }
   @media screen and(max-width: 769px) {
     zoom: 1.1;
