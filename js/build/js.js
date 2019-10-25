@@ -57,7 +57,7 @@ function PatCanDo() {
       _this.props.boring -= _this.props.boring > 0 ? 1 : 0;
       _this.setInitialProperty();
       _this.setProps(_this.props);
-      if (_this.counter === 20 || _this.props.playful === 100 && _this.props.boring === 0) {
+      if (_this.counter === 20) {
         _this.patDoing.textContent = _this.props.playful === 100 ? 'Woooow enougph to dance' : _this.patDoing.textContent;
         _this.resetUfterUpdating();
         _this.counter = 0;
@@ -73,7 +73,7 @@ function PatCanDo() {
       _this.props.health += _this.props.health <= 99 ? 1 : 0;
       _this.setInitialProperty();
       _this.setProps(_this.props);
-      if (_this.counter === 20 || _this.props.health === 100) {
+      if (_this.counter === 20) {
         _this.patDoing.textContent = _this.props.health === 100 ? 'That il all I do not wanna eat' : _this.patDoing.textContent;
         _this.resetUfterUpdating();
         _this.counter = 0;
@@ -90,7 +90,7 @@ function PatCanDo() {
       _this.props.boring -= _this.props.boring > 0 ? 1 : 0;
       _this.setInitialProperty();
       _this.setProps(_this.props);
-      if (_this.counter === 20 || _this.props.happy === 100 && _this.props.boring === 0) {
+      if (_this.counter === 20) {
         _this.patDoing.textContent = _this.props.happy === 100 ? 'Woooow enougph to drink' : _this.patDoing.textContent;
         _this.resetUfterUpdating();
         _this.counter = 0;
@@ -107,7 +107,7 @@ function PatCanDo() {
       _this.props.boring -= _this.props.boring >= 0 ? 1 : 0;
       _this.setInitialProperty();
       _this.setProps(_this.props);
-      if (_this.counter === 20 || _this.props.health === 100 && _this.props.boring === 0) {
+      if (_this.counter === 20) {
         _this.patDoing.textContent = _this.props.health === 100 ? 'Woooow enougph to walk' : _this.patDoing.textContent;
         _this.resetUfterUpdating();
         _this.counter = 0;
@@ -123,7 +123,7 @@ function PatCanDo() {
       _this.props.playful += _this.props.playful <= 99 ? 1 : 0;
       _this.setInitialProperty();
       _this.setProps(_this.props);
-      if (_this.counter === 20 || _this.props.playful === 100) {
+      if (_this.counter === 20) {
         _this.patDoing.textContent = _this.props.playful === 100 ? 'I played too much, need to relax' : _this.patDoing.textContent;
         _this.resetUfterUpdating();
         _this.counter = 0;
@@ -140,7 +140,7 @@ function PatCanDo() {
       _this.props.happy += _this.props.happy <= 99 ? 1 : 0;
       _this.setInitialProperty();
       _this.setProps(_this.props);
-      if (_this.counter === 20 || _this.props.health === 100 && _this.props.happy === 100) {
+      if (_this.counter === 20) {
         _this.patDoing.textContent = _this.props.health === 100 ? 'Woooow enough to sleep' : _this.patDoing.textContent;
         _this.resetUfterUpdating();
         _this.counter = 0;
