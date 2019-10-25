@@ -90,7 +90,7 @@ function PatCanDo() {
       this.props.boring -= this.props.boring > 0 ? 1 : 0;
       this.setInitialProperty();
       this.setProps(this.props);
-      if ( this.counter === 20 || this.props.happy === 100 || this.props.boring === 0) {
+      if ( this.counter === 20 || (this.props.happy === 100 && this.props.boring === 0)) {
         this.patDoing.textContent = this.props.happy === 100
             ? 'Woooow enougph to drink'
             : this.patDoing.textContent;
@@ -109,7 +109,7 @@ function PatCanDo() {
       this.props.boring -= this.props.boring >= 0 ? 1 : 0;
       this.setInitialProperty();
       this.setProps(this.props);
-      if ( this.counter === 20 || this.props.health === 100 || this.props.boring === 0) {
+      if ( this.counter === 20 || (this.props.health === 100 && this.props.boring === 0)) {
         this.patDoing.textContent = this.props.health === 100
             ? 'Woooow enougph to walk'
             : this.patDoing.textContent;
