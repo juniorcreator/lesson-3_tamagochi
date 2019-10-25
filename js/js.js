@@ -1,5 +1,5 @@
 function Application(petName) {
-  this.petName = petName;
+  this.petName = petName || 'Pall';
   this.tamagochi = document.getElementById('tamagochi');
   this.itemImage = document.querySelector('#screen-wrap img');
   this.imgPath = 'img/pumpkin/';
@@ -40,6 +40,9 @@ function Application(petName) {
     walk: 'song/walk.mp3',
     eat: 'song/eat.mp3',
     play: 'song/play.mp3'
+  };
+  this.welcome = () => {
+    this.patDoing.textContent = `Hello I am ${this.petName}`;
   };
   this.playPause = () => {
     this.allowMusic ? this.audio.play() : this.audio.pause();
@@ -297,6 +300,7 @@ function Application(petName) {
 
   };
   this.init = () => {
+    this.welcome();
     this.onOffSong();
     this.showHideInfo();
     this.btnEvents();

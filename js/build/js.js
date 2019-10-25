@@ -3,7 +3,7 @@
 function Application(petName) {
   var _this = this;
 
-  this.petName = petName;
+  this.petName = petName || 'Pall';
   this.tamagochi = document.getElementById('tamagochi');
   this.itemImage = document.querySelector('#screen-wrap img');
   this.imgPath = 'img/pumpkin/';
@@ -44,6 +44,9 @@ function Application(petName) {
     walk: 'song/walk.mp3',
     eat: 'song/eat.mp3',
     play: 'song/play.mp3'
+  };
+  this.welcome = function () {
+    _this.patDoing.textContent = 'Hello I am ' + _this.petName;
   };
   this.playPause = function () {
     _this.allowMusic ? _this.audio.play() : _this.audio.pause();
@@ -360,6 +363,7 @@ function Application(petName) {
   };
   this.riseAgain = function () {};
   this.init = function () {
+    _this.welcome();
     _this.onOffSong();
     _this.showHideInfo();
     _this.btnEvents();
