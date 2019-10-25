@@ -184,7 +184,7 @@ function Application(petName) {
   ImagesSongs.call(this);
   Props.call(this);
   PatCanDo.call(this);
-  this.gameSpeed = 500;
+  this.gameSpeed = 1000;
   this.petName = petName || 'Pall';
   this.allowMusic = true;
   this.interval = null;
