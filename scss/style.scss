@@ -1,3 +1,26 @@
+// Misc
+$egg-radius: 54% / 65% 65% 47% 47%;
+
+// Colors
+$black:  #0f0f0f;
+$white: #fdfdfd;
+
+$background: #fcf8ec;
+
+$body-main: #fdd432;
+$body-shadow: darken($body-main, 12%);
+
+$accent-main: #e84b30;
+
+$screen-black: #6c6c4e;
+$screen-white: #e3e6c9;
+
+// Sizes for Margo
+$s: 4;  // size
+$m-c: 14; // columns
+$m-r: 14; // rows
+
+@import url('https://fonts.googleapis.com/css?family=VT323');
 html, body {
   width: 100%;
   height: 100%;
@@ -5,7 +28,7 @@ html, body {
   padding: 0;
 }
 .main {
-  background: url('../../img/1.jpg') no-repeat center;
+  background: url('../img/1.jpg') no-repeat center;
   background-size: cover;
   height: 100%;
   position: relative;

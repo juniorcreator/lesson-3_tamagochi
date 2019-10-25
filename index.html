@@ -9,16 +9,15 @@
 <body>
 <div class="main">
   <div class="main__song">
-    <audio loop autoplay  id="song">
-        <source id="oggSource" src="song/1.mp3" type="audio/ogg" />
-        <source id="oggSource1" src="song/3.mp3" type="audio/ogg" />
-        <source id="oggSource2" src="song/drink.mp3" type="audio/ogg" />
-        <source id="oggSource3" src="song/eat.mp3" type="audio/ogg" />
-        <source id="oggSource4" src="song/play.mp3" type="audio/ogg" />
-        <source id="oggSource5" src="song/sleep.mp3" type="audio/ogg" />
-        <source id="oggSource6" src="song/walk.mp3" type="audio/ogg" />
-
-        Your browser does not support the audio element.
+    <audio loop autoplay id="song">
+      <source src="song/1.mp3" type="audio/ogg"/>
+      <source src="song/3.mp3" type="audio/ogg"/>
+      <source src="song/drink.mp3" type="audio/ogg"/>
+      <source src="song/eat.mp3" type="audio/ogg"/>
+      <source src="song/play.mp3" type="audio/ogg"/>
+      <source src="song/sleep.mp3" type="audio/ogg"/>
+      <source src="song/walk.mp3" type="audio/ogg"/>
+      Your browser does not support the audio element.
     </audio>
   </div>
   <div class="instructions">
@@ -109,16 +108,23 @@
     </div>
   </div>
 </div>
-  <script src="js/build/js.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<script src="js/build/js.js"></script>
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-89597051-1', 'auto');
-    ga('send', 'pageview');
+  ga('create', 'UA-89597051-1', 'auto');
+  ga('send', 'pageview');
 
-  </script>
+</script>
 </body>
 </html>
