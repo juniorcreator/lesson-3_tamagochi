@@ -32,21 +32,6 @@ html, body {
   background-size: cover;
   height: 100%;
   position: relative;
-  &__play-pause {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    background-image: url("../img/player.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: -19px;
-    &.stop {
-      background-position-x: 18px;
-    }
-  }
 }
 
 
@@ -508,5 +493,31 @@ html, body {
 
   &:hover {
     color: $accent-main;
+  }
+}
+.toggle {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+  }
+  .toggle__play {
+    opacity: 1;
+  }
+  &.play {
+    .toggle__play {
+      opacity: 0;
+    }
+    .toggle__pause {
+      opacity: 1;
+    }
   }
 }

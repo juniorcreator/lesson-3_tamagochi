@@ -1,4 +1,4 @@
-function DoomElements() {
+function doomElements() {
   this.tamagochi = document.getElementById('tamagochi');
   this.itemImage = document.querySelector('#screen-wrap img');
   this.imgPath = 'img/pumpkin/';
@@ -12,7 +12,7 @@ function DoomElements() {
   this.buttons = document.querySelectorAll('.button');
   this.riseBtn = document.getElementById('rise-again');
 }
-function ImagesSongs() {
+function imagesSongs() {
   this.images = {
     dance: 'dance.gif',
     drink: 'drink.gif',
@@ -34,7 +34,7 @@ function ImagesSongs() {
     play: 'song/play.mp3'
   };
 }
-function Props() {
+function props() {
   this.props = {
     health: 100 ,
     happy: 50,
@@ -42,11 +42,14 @@ function Props() {
     boring: 0
   };
 }
-function PatCanDo() {
-  this.dance = () => {
-    this.cleaMainInterval();
+function patCanDo() {
+  this.beforeToDo = () => {
+    clearInterval(this.interval);
     clearInterval(this.itemInterval);
     this.counter = 0;
+  };
+  this.dance = () => {
+    this.beforeToDo();
     this.itemInterval = setInterval(() => {
       this.counter++;
       this.props.playful += this.props.playful <= 99 ? 1 : 0;
@@ -63,9 +66,7 @@ function PatCanDo() {
     }, 800);
   };
   this.eat = () => {
-    this.cleaMainInterval();
-    clearInterval(this.itemInterval);
-    this.counter = 0;
+    this.beforeToDo();
     this.itemInterval = setInterval(() => {
       this.counter++;
       this.props.health += this.props.health <= 99 ? 1 : 0;
@@ -73,7 +74,7 @@ function PatCanDo() {
       this.setProps(this.props);
       if ( this.counter === 20 ) {
         this.patDoing.textContent = this.props.health === 100
-            ? 'That il all I do not wanna eat'
+            ? 'That is all I do not wanna eat'
             : this.patDoing.textContent;
         this.resetUfterUpdating();
         this.counter = 0;
@@ -81,9 +82,7 @@ function PatCanDo() {
     }, 1000);
   };
   this.drink = () => {
-    this.cleaMainInterval();
-    clearInterval(this.itemInterval);
-    this.counter = 0;
+    this.beforeToDo();
     this.itemInterval = setInterval(() => {
       this.counter++;
       this.props.happy += this.props.happy <= 99 ? 1 : 0;
@@ -100,13 +99,11 @@ function PatCanDo() {
     }, 900);
   };
   this.walk = () => {
-    this.cleaMainInterval();
-    clearInterval(this.itemInterval);
-    this.counter = 0;
+    this.beforeToDo();
     this.itemInterval = setInterval(() => {
       this.counter++;
       this.props.health += this.props.health <= 99 ? 1 : 0;
-      this.props.boring -= this.props.boring >= 0 ? 1 : 0;
+      this.props.boring -= this.props.boring > 0 ? 1 : 0;
       this.setInitialProperty();
       this.setProps(this.props);
       if ( this.counter === 20 ) {
@@ -119,9 +116,7 @@ function PatCanDo() {
     }, 800);
   };
   this.play = () => {
-    this.cleaMainInterval();
-    clearInterval(this.itemInterval);
-    this.counter = 0;
+    this.beforeToDo();
     this.itemInterval = setInterval(() => {
       this.counter++;
       this.props.playful += this.props.playful <= 99 ? 1 : 0;
@@ -133,13 +128,11 @@ function PatCanDo() {
             : this.patDoing.textContent;
         this.resetUfterUpdating();
         this.counter = 0;
-      }``
+      }
     }, 900);
   };
   this.sleep = () => {
-    this.cleaMainInterval();
-    clearInterval(this.itemInterval);
-    this.counter = 0;
+    this.beforeToDo();
     this.itemInterval = setInterval(() => {
       this.counter++;
       this.props.health += this.props.health <= 99 ? 1 : 0;
@@ -161,15 +154,15 @@ function PatCanDo() {
     }
   };
   this.die = () => {
-    let isDead = this.props.health === 0;
-    if (isDead) {
+    if (!this.props.health) {
       this.itemImage.setAttribute('src', this.imgPath + this.images.rip);
-      this.patDoing.textContent = 'Oh no';
-      this.allowMusic = false;
       this.tamagochi.classList.add('die');
-      this.playPause();
       this.blockButtons();
       clearInterval(this.interval);
+      this.patDoing.textContent = 'Oh no';
+      this.audioControll.click();
+      this.allowMusic = false;
+      this.playPause();
     }
   };
   this.riseAgain = () => {
@@ -179,11 +172,12 @@ function PatCanDo() {
     });
   };
 }
+
 function Application(petName) {
-  DoomElements.call(this);
-  ImagesSongs.call(this);
-  Props.call(this);
-  PatCanDo.call(this);
+  doomElements.call(this);
+  imagesSongs.call(this);
+  props.call(this);
+  patCanDo.call(this);
   this.gameSpeed = 1000;
   this.petName = petName || 'Pall';
   this.allowMusic = true;
@@ -198,26 +192,22 @@ function Application(petName) {
   };
   this.onOffSong = () => {
     this.audioControll.addEventListener('click', (e) => {
+      this.audioControll.classList.toggle('play');
       this.allowMusic = !this.allowMusic;
       this.playPause();
     });
+    this.audioControll.click();
   };
   this.setSong = (song) => {
-    if (song === undefined) {
-      this.playPause();
-      return;
-    }
       this.audio.setAttribute('src', song);
       this.playPause();
   };
   this.showHideInfo = () => {
-    let close = document.getElementById('close');
-    let info = document.querySelector('.instructions__info');
     let instructions = document.querySelector('.instructions');
-    close.addEventListener('click', () => {
+    document.getElementById('close').addEventListener('click', () => {
       instructions.classList.add('hidden');
     });
-    info.addEventListener('click', () => {
+    document.querySelector('.instructions__info').addEventListener('click', () => {
       instructions.classList.remove('hidden');
     })
   };
@@ -225,7 +215,10 @@ function Application(petName) {
     let btns = document.querySelectorAll('.button');
     for (let btn of btns) {
       btn.addEventListener('click', (e) => {
-        this.selectedItem(btn.getAttribute('id'));
+        this.selectedItem(btn.getAttribute('id'),
+            btn.dataset.btn,
+            btn.dataset.doing
+        );
       });
     }
   };
@@ -235,13 +228,10 @@ function Application(petName) {
     this.playful.textContent = playful + '%';
     this.boring.textContent = boring + '%';
   };
-  this.setOneProperty = (element, value) => {
-    let el = this[element].parentElement.parentElement.firstElementChild.firstElementChild;
-    el.style.width = this.props[value] + '%';
-  };
   this.setInitialProperty = () => {
     for (let prop in this.props) {
-      this.setOneProperty(prop, prop);
+      let el = this[prop].parentElement.parentElement.firstElementChild.firstElementChild;
+      el.style.width = this.props[prop] + '%';
     }
   };
   this.downProperties = () => {
@@ -256,47 +246,11 @@ function Application(petName) {
       this.autoTalker();
     }, this.gameSpeed);
   };
-  this.selectedItem = (id) => {
-    switch (id) {
-      case 'bt-1' :
-        this.itemImage.setAttribute('src', this.imgPath + this.images.eat);
-        this.patDoing.textContent = `"${this.petName + ' is eating'}"`;
-        this.setSong(this.songs.eat);
-        this.eat();
-        break;
-      case 'bt-2' :
-        this.itemImage.setAttribute('src', this.imgPath + this.images.drink);
-        this.patDoing.textContent = `"${this.petName + ' is drinking'}"`;
-        this.setSong(this.songs.drink);
-        this.drink();
-        break;
-      case 'bt-3' :
-        this.itemImage.setAttribute('src', this.imgPath + this.images.walk);
-        this.patDoing.textContent = `"${this.petName + ' is walking'}"`;
-        this.setSong(this.songs.walk);
-        this.walk();
-        break;
-      case 'bt-4' :
-        this.itemImage.setAttribute('src', this.imgPath + this.images.dance);
-        this.patDoing.textContent = `"${this.petName + ' is dancing'}"`;
-        this.setSong(this.songs.dance);
-        this.dance();
-        break;
-      case 'bt-5' :
-        this.itemImage.setAttribute('src', this.imgPath + this.images.play);
-        this.patDoing.textContent = `"${this.petName + ' is playing'}"`;
-        this.setSong(this.songs.play);
-        this.play();
-        break;
-      case 'bt-6' :
-        this.itemImage.setAttribute('src', this.imgPath + this.images.sleep);
-        this.patDoing.textContent = `"${this.petName + ' is sleeping'}"`;
-        this.setSong(this.songs.sleep);
-        this.sleep();
-        break;
-      default:
-        break;
-    }
+  this.selectedItem = (id, src, doing) => {
+    this.itemImage.setAttribute('src', this.imgPath + this.images[src]);
+    this.setSong(this.songs[src]);
+    this.patDoing.textContent = `"${this.petName}" is ${doing}`;
+    this[src]();
   };
   this.resetUfterUpdating = () => {
     clearInterval(this.itemInterval);
@@ -307,11 +261,11 @@ function Application(petName) {
   };
   this.cleaMainInterval = () => {clearInterval(this.interval);};
   this.autoTalker = () => {
-    this.patDoing.textContent = this.props.health < 30 ?
+    this.patDoing.textContent = this.props.health === 0 ?
+        'OH no' : this.props.health < 30 ?
         'Hey, feed me': this.props.happy < 30 ?
         'I am not happy(' : this.props.playful < 30 ?
-        'Wanna play' : this.props.boring > 50 ?
-        'it is getting boring' : this.patDoing.textContent;
+        'Wanna play' : this.patDoing.textContent;
   };
   this.init = () => {
     this.welcome();

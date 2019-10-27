@@ -9,15 +9,7 @@
 <body>
 <div class="main">
   <div class="main__song">
-    <audio loop autoplay id="song">
-      <source src="song/1.mp3" type="audio/ogg"/>
-      <source src="song/3.mp3" type="audio/ogg"/>
-      <source src="song/drink.mp3" type="audio/ogg"/>
-      <source src="song/eat.mp3" type="audio/ogg"/>
-      <source src="song/play.mp3" type="audio/ogg"/>
-      <source src="song/sleep.mp3" type="audio/ogg"/>
-      <source src="song/walk.mp3" type="audio/ogg"/>
-      Your browser does not support the audio element.
+    <audio loop autoplay src="song/1.mp3" type="audio/ogg" id="song">
     </audio>
   </div>
   <div class="instructions">
@@ -32,7 +24,10 @@
     <span class="instructions__close" id="close">+</span>
     <span class="instructions__info">Info</span>
   </div>
-  <div class="main__play-pause" id="play"></div>
+  <div class="main__play-pause toggle" id="play">
+    <img src="img/pause.png" class="toggle__pause" alt="img">
+    <img src="img/play.png" class="toggle__play" alt="img">
+  </div>
 </div>
 <div class="tamagotchi" id="tamagochi">
   <div class="loop"></div>
@@ -97,34 +92,16 @@
         </div>
       </div>
     </div>
-
     <div class="buttons">
-      <div class="button button--a" id="bt-1">1</div>
-      <div class="button button--b" id="bt-2">2</div>
-      <div class="button button--c" id="bt-3">3</div>
-      <div class="button button--d" id="bt-4">4</div>
-      <div class="button button--i" id="bt-5">5</div>
-      <div class="button button--f" id="bt-6">6</div>
+      <div class="button button--a" data-btn="eat" data-doing="eating" id="bt-1">1</div>
+      <div class="button button--b" data-btn="drink" data-doing="drinking" id="bt-2">2</div>
+      <div class="button button--c" data-btn="walk" data-doing="walking" id="bt-3">3</div>
+      <div class="button button--d" data-btn="dance" data-doing="dancing" id="bt-4">4</div>
+      <div class="button button--i" data-btn="play" data-doing="playing" id="bt-5">5</div>
+      <div class="button button--f" data-btn="sleep" data-doing="sleeping" id="bt-6">6</div>
     </div>
   </div>
 </div>
 <script src="js/build/js.js"></script>
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-  ga('create', 'UA-89597051-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </body>
 </html>
